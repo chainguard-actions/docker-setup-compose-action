@@ -1,0 +1,22 @@
+name: Test with specific version
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - id: action
+        uses: .
+        with:
+          version: 'v2.32.4'
+          cache-binary: 'false'
+      - name: Assert docker compose version matches requested
+        run: |
+          ACTUAL_VERSION=$(docker compose version --short 2>/dev/null || docker compose version | grep -oP 'v[\d.]+' | head -1)
+          echo "actual version: $ACTUAL_VERSION"
+          if ! echo "$ACTUAL_VERSION" | grep -q "2.32.4"; then
+            echo "FAIL: expected version 2.32.4, got $ACTUAL_VERSION"
+            exit 1
+          fi
+          echo "PASS: docker compose version is 2.32.4"

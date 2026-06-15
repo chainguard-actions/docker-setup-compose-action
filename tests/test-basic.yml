@@ -1,0 +1,20 @@
+name: Test basic usage (default inputs)
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - id: setup-compose
+        uses: .
+        with:
+          cache-binary: 'false'
+      - name: Assert docker compose is available
+        run: |
+          echo "Checking docker compose availability..."
+          if ! docker compose version; then
+            echo "FAIL: docker compose command not available"
+            exit 1
+          fi
+          echo "PASS: docker compose is available"

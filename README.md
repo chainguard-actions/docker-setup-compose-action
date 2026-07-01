@@ -1,17 +1,69 @@
-# docker/setup-compose-action
+[![GitHub release](https://img.shields.io/github/release/docker/setup-compose-action.svg?style=flat-square)](https://github.com/docker/setup-compose-action/releases/latest)
+[![GitHub marketplace](https://img.shields.io/badge/marketplace-docker--setup--compose-blue?logo=github&style=flat-square)](https://github.com/marketplace/actions/docker-setup-compose)
+[![CI workflow](https://img.shields.io/github/actions/workflow/status/docker/setup-compose-action/ci.yml?label=ci&logo=github&style=flat-square)](https://github.com/docker/setup-compose-action/actions?workflow=ci)
+[![Test workflow](https://img.shields.io/github/actions/workflow/status/docker/setup-compose-action/test.yml?label=test&logo=github&style=flat-square)](https://github.com/docker/setup-compose-action/actions?workflow=test)
+[![Codecov](https://img.shields.io/codecov/c/github/docker/setup-compose-action?logo=codecov&style=flat-square)](https://codecov.io/gh/docker/setup-compose-action)
 
-Set up Docker Compose
+## About
 
-Hardened by [Chainguard](https://www.chainguard.dev) from the upstream action at [https://github.com/docker/setup-compose-action](https://github.com/docker/setup-compose-action).
+GitHub Action to set up Docker [Compose](https://github.com/docker/compose).
 
-## Versions
+![Screenshot](.github/setup-compose-action.png)
 
-| Version | Tag | Upstream commit |
-|---------|-----|-----------------|
-| v1.2.0 | [`v1.2.0`](https://github.com/chainguard-actions/docker-setup-compose-action/tree/v1.2.0) | [`364cc21`](https://github.com/docker/setup-compose-action/commit/364cc21a5de5b1ee4a7f5f9d3fa374ce0ccde746) |
-| v2.0.0 | [`v2.0.0`](https://github.com/chainguard-actions/docker-setup-compose-action/tree/v2.0.0) | [`112d3e3`](https://github.com/docker/setup-compose-action/commit/112d3e30db3bf437d207fea57f22510569d1ab97) |
-| v2.1.0 | [`v2.1.0`](https://github.com/chainguard-actions/docker-setup-compose-action/tree/v2.1.0) | [`8cccb8c`](https://github.com/docker/setup-compose-action/commit/8cccb8c14b6500aaffebff1aa49c502c34d2e5e6) |
-| v2.2.0 | [`v2.2.0`](https://github.com/chainguard-actions/docker-setup-compose-action/tree/v2.2.0) | [`16feee7`](https://github.com/docker/setup-compose-action/commit/16feee727cbdc83b6a014e6cc26fec4a79bcf30c) |
+___
+
+* [Usage](#usage)
+* [Customizing](#customizing)
+  * [inputs](#inputs)
+* [Contributing](#contributing)
+
+## Usage
+
+```yaml
+name: ci
+
+on:
+  push:
+
+jobs:
+  compose:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Set up Docker Compose
+        uses: docker/setup-compose-action@v2
+```
+
+> [!NOTE]
+> If Docker Compose is already installed on the runner, the action will skip
+> download. Otherwise, it will download and install the latest stable version
+> [available on GitHub](https://github.com/docker/compose/releases/latest).
+
+To always download and install the latest version of Docker Compose:
+
+```yaml
+      -
+        name: Set up Docker Compose
+        uses: docker/setup-compose-action@v2
+        with:
+          version: latest
+```
+
+## Customizing
+
+### inputs
+
+The following inputs can be used as `step.with` keys:
+
+| Name           | Type   | Default | Description                                                                     |
+|----------------|--------|---------|---------------------------------------------------------------------------------|
+| `version`      | String |         | [Compose](https://github.com/docker/compose) version. (eg. `v2.32.4`, `latest`) |
+| `cache-binary` | Bool   | `true`  | Cache compose binary to GitHub Actions cache backend                            |
+
+## Contributing
+
+Want to contribute? Awesome! You can find information about contributing to
+this project in the [CONTRIBUTING.md](/.github/CONTRIBUTING.md)
 
 ## Privacy
 

@@ -12,6 +12,7 @@ Hardened by [Chainguard](https://www.chainguard.dev) from the upstream action at
 | v2.0.0 | [`v2.0.0`](https://github.com/chainguard-actions/docker-setup-compose-action/tree/v2.0.0) | [`112d3e3`](https://github.com/docker/setup-compose-action/commit/112d3e30db3bf437d207fea57f22510569d1ab97) |
 | v2.1.0 | [`v2.1.0`](https://github.com/chainguard-actions/docker-setup-compose-action/tree/v2.1.0) | [`8cccb8c`](https://github.com/docker/setup-compose-action/commit/8cccb8c14b6500aaffebff1aa49c502c34d2e5e6) |
 | v2.2.0 | [`v2.2.0`](https://github.com/chainguard-actions/docker-setup-compose-action/tree/v2.2.0) | [`16feee7`](https://github.com/docker/setup-compose-action/commit/16feee727cbdc83b6a014e6cc26fec4a79bcf30c) |
+| v2.3.0 | [`v2.3.0`](https://github.com/chainguard-actions/docker-setup-compose-action/tree/v2.3.0) | [`4eb059f`](https://github.com/docker/setup-compose-action/commit/4eb059ff7f16592f9c84d5ca339c53cb7c5064e2) |
 
 ## Privacy
 

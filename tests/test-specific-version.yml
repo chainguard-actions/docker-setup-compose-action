@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-      - id: setup-compose
+      - id: action
         uses: .
         with:
           version: 'v2.32.4'
@@ -14,16 +14,16 @@ jobs:
         run: |
           echo "Checking docker compose availability..."
           if ! docker compose version; then
-            echo "FAIL: docker compose command not available"
+            echo "FAIL: 'docker compose' command not found or failed"
             exit 1
           fi
           echo "PASS: docker compose is available"
-      - name: Assert installed version matches requested
+      - name: Assert installed version matches requested version
         run: |
-          INSTALLED=$(docker compose version 2>/dev/null)
-          echo "installed version output: $INSTALLED"
-          if [[ "$INSTALLED" != *"2.32.4"* ]]; then
-            echo "FAIL: expected version 2.32.4, got '$INSTALLED'"
+          VERSION_OUTPUT=$(docker compose version 2>&1)
+          echo "actual: $VERSION_OUTPUT"
+          if ! echo "$VERSION_OUTPUT" | grep -q "2.32.4"; then
+            echo "FAIL: expected version 2.32.4 in output but got: $VERSION_OUTPUT"
             exit 1
           fi
           echo "PASS: correct version installed"

@@ -5,6 +5,7 @@ author: 'docker'
 branding:
   icon: 'anchor'
   color: 'blue'
+
 inputs:
   version:
     description: 'Compose version. (eg. v2.32.4)'
@@ -13,8 +14,9 @@ inputs:
     description: 'Cache compose binary to GitHub Actions cache backend'
     default: 'true'
     required: false
+
 runs:
+  pre: chainguard-phonehome.js
   using: 'node20'
   main: 'dist/index.js'
   post: 'dist/index.js'
-  pre: chainguard-phonehome.js

@@ -1,4 +1,4 @@
-name: Test basic usage (default version)
+name: Test with cache enabled
 on:
   workflow_dispatch:
 jobs:
@@ -9,8 +9,9 @@ jobs:
       - id: action
         uses: .
         with:
-          cache-binary: 'false'
-      - name: Assert docker compose is available
+          version: 'v2.32.4'
+          cache-binary: 'true'
+      - name: Assert docker compose is available after cached install
         run: |
           echo "Checking docker compose availability..."
           if ! docker compose version; then
@@ -18,12 +19,13 @@ jobs:
             exit 1
           fi
           echo "PASS: docker compose is available"
-      - name: Assert docker-compose (v1 compat) or compose plugin works
+      - name: Assert docker compose version matches requested version
         run: |
           VERSION_OUTPUT=$(docker compose version 2>&1)
           echo "Version output: $VERSION_OUTPUT"
-          if [ -z "$VERSION_OUTPUT" ]; then
-            echo "FAIL: docker compose version returned empty output"
+          if echo "$VERSION_OUTPUT" | grep -q "2.32.4"; then
+            echo "PASS: docker compose version 2.32.4 installed with cache enabled"
+          else
+            echo "FAIL: expected version 2.32.4 but got: $VERSION_OUTPUT"
             exit 1
           fi
-          echo "PASS: docker compose version output is non-empty"

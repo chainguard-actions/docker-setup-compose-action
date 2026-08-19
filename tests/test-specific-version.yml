@@ -1,4 +1,4 @@
-name: Test basic usage (default version)
+name: Test specific version installation
 on:
   workflow_dispatch:
 jobs:
@@ -9,6 +9,7 @@ jobs:
       - id: setup-compose
         uses: .
         with:
+          version: 'v2.32.4'
           cache-binary: 'false'
       - name: Assert docker compose is available
         run: |
@@ -18,13 +19,13 @@ jobs:
             exit 1
           fi
           echo "PASS: docker compose is available"
-      - name: Assert docker-compose (v1 compat) or compose version output
+      - name: Assert specific version is installed
         run: |
           VERSION_OUTPUT=$(docker compose version 2>&1)
           echo "version output: $VERSION_OUTPUT"
-          if echo "$VERSION_OUTPUT" | grep -qiE 'compose|version'; then
-            echo "PASS: version output looks valid"
+          if echo "$VERSION_OUTPUT" | grep -q '2.32.4'; then
+            echo "PASS: correct version 2.32.4 is installed"
           else
-            echo "FAIL: unexpected version output: $VERSION_OUTPUT"
+            echo "FAIL: expected version 2.32.4 but got: $VERSION_OUTPUT"
             exit 1
           fi

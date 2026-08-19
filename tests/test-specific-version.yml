@@ -1,4 +1,4 @@
-name: Test basic usage (default version)
+name: Test specific version installation
 on:
   workflow_dispatch:
 jobs:
@@ -8,6 +8,8 @@ jobs:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
       - id: setup-compose
         uses: .
+        with:
+          version: v2.32.4
       - name: Assert docker compose is available
         run: |
           echo "Checking docker compose availability..."
@@ -16,12 +18,13 @@ jobs:
             exit 1
           fi
           echo "PASS: docker compose is available"
-      - name: Assert compose version string is non-empty
+      - name: Assert correct version is installed
         run: |
-          VERSION="$(docker compose version 2>&1)"
-          echo "version output: $VERSION"
-          if [ -z "$VERSION" ]; then
-            echo "FAIL: docker compose version returned empty output"
+          INSTALLED="$(docker compose version 2>&1)"
+          echo "installed version: $INSTALLED"
+          if echo "$INSTALLED" | grep -qF "2.32.4"; then
+            echo "PASS: correct version 2.32.4 is installed"
+          else
+            echo "FAIL: expected version 2.32.4 but got: $INSTALLED"
             exit 1
           fi
-          echo "PASS: docker compose version is '$VERSION'"

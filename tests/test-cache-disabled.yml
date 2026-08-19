@@ -1,4 +1,4 @@
-name: Test specific version install
+name: Test cache disabled
 on:
   workflow_dispatch:
 jobs:
@@ -10,7 +10,8 @@ jobs:
         uses: .
         with:
           version: 'v2.32.4'
-      - name: Assert docker compose is available
+          cache-binary: 'false'
+      - name: Assert docker compose is available even without cache
         run: |
           echo "Checking docker compose availability..."
           if ! docker compose version; then
@@ -18,7 +19,7 @@ jobs:
             exit 1
           fi
           echo "PASS: docker compose is available"
-      - name: Assert docker compose version matches requested
+      - name: Assert docker compose version is correct
         run: |
           VERSION_OUTPUT=$(docker compose version 2>&1)
           echo "version output: $VERSION_OUTPUT"

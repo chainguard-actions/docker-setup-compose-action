@@ -1,0 +1,31 @@
+name: Test cache-binary enabled
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - id: setup-compose
+        uses: .
+        with:
+          version: 'v2.32.4'
+          cache-binary: 'true'
+      - name: Assert docker compose is available after cached install
+        run: |
+          echo "Checking docker compose availability with cache enabled..."
+          if ! docker compose version; then
+            echo "FAIL: docker compose command not available"
+            exit 1
+          fi
+          echo "PASS: docker compose is available"
+      - name: Assert correct version is installed
+        run: |
+          COMPOSE_VERSION=$(docker compose version 2>&1)
+          echo "compose version output: $COMPOSE_VERSION"
+          if echo "$COMPOSE_VERSION" | grep -q "2.32.4"; then
+            echo "PASS: correct version 2.32.4 is installed with caching enabled"
+          else
+            echo "FAIL: expected version 2.32.4 but got: $COMPOSE_VERSION"
+            exit 1
+          fi

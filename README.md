@@ -6,14 +6,14 @@ Hardened by [Chainguard](https://www.chainguard.dev) from the upstream action at
 
 ## Versions
 
-| Version | Tag | Upstream commit |
-|---------|-----|-----------------|
-| v1.2.0 | [`v1.2.0`](https://github.com/chainguard-actions/docker-setup-compose-action/tree/v1.2.0) | [`364cc21`](https://github.com/docker/setup-compose-action/commit/364cc21a5de5b1ee4a7f5f9d3fa374ce0ccde746) |
-| v2.0.0 | [`v2.0.0`](https://github.com/chainguard-actions/docker-setup-compose-action/tree/v2.0.0) | [`112d3e3`](https://github.com/docker/setup-compose-action/commit/112d3e30db3bf437d207fea57f22510569d1ab97) |
-| v2.1.0 | [`v2.1.0`](https://github.com/chainguard-actions/docker-setup-compose-action/tree/v2.1.0) | [`8cccb8c`](https://github.com/docker/setup-compose-action/commit/8cccb8c14b6500aaffebff1aa49c502c34d2e5e6) |
-| v2.2.0 | [`v2.2.0`](https://github.com/chainguard-actions/docker-setup-compose-action/tree/v2.2.0) | [`16feee7`](https://github.com/docker/setup-compose-action/commit/16feee727cbdc83b6a014e6cc26fec4a79bcf30c) |
-| v2.3.0 | [`v2.3.0`](https://github.com/chainguard-actions/docker-setup-compose-action/tree/v2.3.0) | [`4eb059f`](https://github.com/docker/setup-compose-action/commit/4eb059ff7f16592f9c84d5ca339c53cb7c5064e2) |
-| v2.4.0 | [`v2.4.0`](https://github.com/chainguard-actions/docker-setup-compose-action/tree/v2.4.0) | [`5404251`](https://github.com/docker/setup-compose-action/commit/54042514f505b273907334ae2b9cdbb9a0213c1a) |
+| Version | Tag | Upstream commit | Hardening report |
+|---------|-----|-----------------|------------------|
+| v1.2.0 | [`v1.2.0`](https://github.com/chainguard-actions/docker-setup-compose-action/tree/v1.2.0) | [`364cc21`](https://github.com/docker/setup-compose-action/commit/364cc21a5de5b1ee4a7f5f9d3fa374ce0ccde746) | [`HARDENING.md`](https://github.com/chainguard-actions/docker-setup-compose-action/blob/v1.2.0/HARDENING.md) |
+| v2.0.0 | [`v2.0.0`](https://github.com/chainguard-actions/docker-setup-compose-action/tree/v2.0.0) | [`112d3e3`](https://github.com/docker/setup-compose-action/commit/112d3e30db3bf437d207fea57f22510569d1ab97) | [`HARDENING.md`](https://github.com/chainguard-actions/docker-setup-compose-action/blob/v2.0.0/HARDENING.md) |
+| v2.1.0 | [`v2.1.0`](https://github.com/chainguard-actions/docker-setup-compose-action/tree/v2.1.0) | [`8cccb8c`](https://github.com/docker/setup-compose-action/commit/8cccb8c14b6500aaffebff1aa49c502c34d2e5e6) | [`HARDENING.md`](https://github.com/chainguard-actions/docker-setup-compose-action/blob/v2.1.0/HARDENING.md) |
+| v2.2.0 | [`v2.2.0`](https://github.com/chainguard-actions/docker-setup-compose-action/tree/v2.2.0) | [`16feee7`](https://github.com/docker/setup-compose-action/commit/16feee727cbdc83b6a014e6cc26fec4a79bcf30c) | [`HARDENING.md`](https://github.com/chainguard-actions/docker-setup-compose-action/blob/v2.2.0/HARDENING.md) |
+| v2.3.0 | [`v2.3.0`](https://github.com/chainguard-actions/docker-setup-compose-action/tree/v2.3.0) | [`4eb059f`](https://github.com/docker/setup-compose-action/commit/4eb059ff7f16592f9c84d5ca339c53cb7c5064e2) | [`HARDENING.md`](https://github.com/chainguard-actions/docker-setup-compose-action/blob/v2.3.0/HARDENING.md) |
+| v2.4.0 | [`v2.4.0`](https://github.com/chainguard-actions/docker-setup-compose-action/tree/v2.4.0) | [`5404251`](https://github.com/docker/setup-compose-action/commit/54042514f505b273907334ae2b9cdbb9a0213c1a) | [`HARDENING.md`](https://github.com/chainguard-actions/docker-setup-compose-action/blob/v2.4.0/HARDENING.md) |
 
 ## Privacy
 

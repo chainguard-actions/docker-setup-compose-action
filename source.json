@@ -4,8 +4,13 @@
   "version": "v2.4.0",
   "commit_sha": "54042514f505b273907334ae2b9cdbb9a0213c1a",
   "url": "https://github.com/docker/setup-compose-action",
-  "policy_sha": "d636be7e43ef829af6e853da6b3c7566db9f72fe",
+  "policy_sha": "374911c4be584df24e6da57af2d990570ef0f859",
   "test_policy_sha": "843adf9e4b8f85d0c08b27b9d0b09dd094b54702",
   "test_agent_version": "2",
-  "harden_agent_version": "2"
+  "harden_agent_version": "2",
+  "dist_artifact": {
+    "gcs_uri": "gs://patch-actions-node-artifacts/dist-artifacts/docker/setup-compose-action/v2.4.0/sha256-c46318a4543e2ac69802360ade4b02d85033093fcb5073798dca9168b68d0767.tar.gz",
+    "sha256": "c46318a4543e2ac69802360ade4b02d85033093fcb5073798dca9168b68d0767",
+    "size_bytes": 1930929
+  }
 }
